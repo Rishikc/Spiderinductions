@@ -120,7 +120,7 @@ retypepassword1.innerHTML="";
   <td><label for="email"><span style="color:red">*</span>email address:</label></td>
   <td><input type="text" onblur="emailval(this.value,email_id)" onfocus="req(username,user,'username')" id="email" name="email" /></td>
   </tr><tr><td></td><td id="email_id" style="color:red" ></td></tr><tr>
-  <td><label for="dob"><span style="color:red">*</span>Date of Birth:</label></td>
+  <td><label for="dob"><span style="color:red" >*</span>Date of Birth(yyyy/mm/dd):</label></td>
   <td><input type="date"  id="dob" name="dob" /></td>
   </tr><tr><td></td><td id="dob1" style="color:red" ></td></tr><tr>
   <td><label for="gender"><span style="color:red">*</span>gender:</label></td>
