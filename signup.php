@@ -329,8 +329,11 @@ echo 'u have successfully signed up :) ';
 
 
 
+header('Location:home.php');
+exit();
 
- }  
+ }
+ 
 ?>
 
   

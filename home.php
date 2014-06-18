@@ -67,7 +67,7 @@ echo  'Sorry, you must enter your username and password to log in.'.'<br>';
         <link id="data-uikit-theme" rel="stylesheet" href="css/uikit.docs.min.css">
         <link rel="stylesheet" href="css/docs.css">
         <link rel="stylesheet" href="../vendor/highlight/highlight.css">
-        <script src="steps.js"></script>
+   
         <script src="vendor/jquery.js"></script>
         <script src="dist/js/uikit.min.js"></script>
         <script src="vendor/highlight/highlight.js"></script>
@@ -119,9 +119,9 @@ echo  'Sorry, you must enter your username and password to log in.'.'<br>';
  { 
 ?>
 <a href="#my-id" data-uk-modal>Log out</a>
-<img src=file_display.php? width=100 height=100>
+<img src="file_display.php?lname=<?php echo"".$_SESSION['user_id']. ""?>" width=100 height=100>
 <?php
- echo('<p class="login">You are logged in as '.$_SESSION['firstname'] .' '. $_SESSION['lastname']  . '.</p>');
+ echo('<p class="login">Welcome '.$_SESSION['firstname'] .' '. $_SESSION['lastname']  . '.</p>');
 
  ?>
 	<div id="my-id" class="uk-modal">
