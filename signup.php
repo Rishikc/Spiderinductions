@@ -1,5 +1,6 @@
 <?php session_start(); 
 include_once $_SERVER['DOCUMENT_ROOT'] . '/securimage/securimage.php';
+include "file_constants.php";
 ?>
 
 <!DOCTYPE HTML>
@@ -313,7 +314,7 @@ else
                     // prepare the image for insertion
                     $imgData =addslashes (file_get_contents($_FILES['userfile']['tmp_name']));
 
-                    	$dbc = mysqli_connect('localhost','root','qwerty','spider')
+                    	$dbc = mysqli_connect($host,$user,$pass,$db)
 or die('error connecting to mysql server');
 $query1="INSERT INTO signup(firstname,lastname,username,email,dob,gender,password,github,department,profilepicture,interest) values('$firstname','$lastname','$username','$email','$dob','$gender',SHA('$password'),'$github','$department','{$imgData}','$interests')";
 $result=mysqli_query($dbc,$query1)
@@ -336,11 +337,11 @@ echo 'u have successfully signed up :) ';                }
 
     }
     else {
-        $dbc = mysqli_connect('localhost','root','qwerty','spider')
+        $dbc = mysqli_connect($host,$user,$pass,$db)
 or die('error connecting to mysql server');
 $query1="INSERT INTO signup(firstname,lastname,username,email,dob,gender,password,github,department,profilepicture,interest) values('$firstname','$lastname','$username','$email','$dob','$gender',SHA('$password'),'$github','$department','','$interests')";
 $result=mysqli_query($dbc,$query1)
-or die('error querying 1');
+or die('error querying 2');
 mysqli_close($dbc);
 $msg="u have successfully signed up :)";
     }

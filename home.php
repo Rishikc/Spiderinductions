@@ -1,5 +1,5 @@
 <?php
-
+include "file_constants.php";
 
   // Start the session
 session_start();
@@ -20,7 +20,7 @@ exit;
 }
 else
 {
-$dbc = mysqli_connect('localhost','root','qwerty','spider')
+$dbc = mysqli_connect($host,$user,$pass,$db)
 or die('error connecting to mysql server');
 
       $user_username = mysqli_real_escape_string($dbc, trim($_POST['username']));
