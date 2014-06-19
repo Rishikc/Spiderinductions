@@ -203,6 +203,8 @@ retypepassword1.innerHTML="";
   $maxsize = 204800;
   
 if(isset($_POST['submit'])){
+
+
 if(!$firstname){
 echo "<br><span style='color:red'>*firstname required</span>";
 $evaluator++;
@@ -211,6 +213,20 @@ $evaluator++;
 if(!$username){
 echo "<br><span style='color:red'>*username required";
 $evaluator++;
+}
+else{
+$dbc = mysqli_connect($host,$user,$pass,$db)
+or die('error connecting to mysql server');
+$query4="SELECT*FROM signup";
+$result4=mysqli_query($dbc,$query4)
+or die('error querying 4');
+while($row=mysqli_fetch_array($result4)){
+if($username==$row['username']){
+echo 'username already exists. please choose another username '.'<br/>';
+$evaluator++;
+}
+}
+mysqli_close($dbc);
 }
 
 if($dob==0){
@@ -248,12 +264,26 @@ else {echo"<br><span style='color:red'>*re-enter password required";$evaluator++
 else {echo"<br><span style='color:red'>*password required";$evaluator++;}
 
 if(strlen($email)!=0)
-{$at=strpos($email,'@');
+{
+$dbc = mysqli_connect($host,$user,$pass,$db)
+or die('error connecting to mysql server');
+$query3="SELECT*FROM signup";
+$result3=mysqli_query($dbc,$query3)
+or die('error querying 3');
+while($row=mysqli_fetch_array($result3)){
+if($email==$row['email']){
+echo 'email id exists. please choose another email';
+$evaluator++;
+}
+else{
+$at=strpos($email,'@');
 $dot=strpos($email,'.');
 if($at<1||$dot<$at+2||$dot+2>=strlen($email))
 {
 echo "<br><span style='color:red'>*invalid email-id";
 $evaluator++;
+}
+}
 }
 }
 else
