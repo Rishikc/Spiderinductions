@@ -147,7 +147,119 @@ echo  'Sorry, you must enter your username and password to log in.'.'<br>';
             </div>
         </nav>
 
-      
+<div class="tm-section tm-section-color-2 tm-section-colored" id="Spider" ">
+            <div class="uk-container uk-container-center uk-text-center">
+
+                <h1 class="uk-heading-large">Spider</h1>
+
+<div class="uk-grid">
+    <div class="uk-width-medium-1-1" >
+<!--News1-->
+	<article class="uk-article" align="left" style="color:#ffffff;" >
+   			 <h1 class="uk-article-title"data-uk-scrollspy="{cls:'uk-animation-slide-left', repeat: true}"><center>The research and development club of NIT Trichy </center></h1>
+   		
+   				 <p class="uk-article-lead">
+    				Spider, the research and development club of NIT Trichy was established in 2002. It is a platform for
+
+interested students to do projects in interdisciplinary areas which include Electronics, App development,
+
+image processing and Web development. The motive of the club is to improve the quality of the students'
+
+engineering experience by making them practically implement what they learn and to also serve as an avenue
+
+for the students with like thoughts to come together and pool their efforts to come up with innovative ideas
+
+to challenging problems.
+    
+</div>
+
+	<button onclick="<?php if (empty($_SESSION['user_id']))echo"alert('login to read more ;)');"?>" class="uk-button" data-uk-modal="{target:'#my-ar'}">Read more</button>
+	
+	<?php if (!empty($_SESSION['user_id'])) { ?>
+<div id="my-ar" class="uk-modal">
+    <div class="uk-modal-dialog uk-modal-dialog-slide">
+
+	<a href="" class="uk-modal-close uk-close"></a>
+<br>
+<font color="black">
+	
+<center><u><h3><b>SPIDER</b></h3></u></center>
+Sharing the knowledge gained by its members with the other fellow students of the college is another crucial
+
+dimension of the club's role in the college. 'µ-Con'- the workshop for freshers is being conducted every year
+
+towards this end. At the end of the workshop, the students are made to implement a project and take it back
+
+with them. 'Accelerometer Controlled Bot', Human interface device for the Angry- birds game are examples
+
+of such projects. Also, a new tradition of conducting free 'Tech Talk' which is open to all, is being followed for
+
+the past two years by the club. Few topics which we touched were 'Smart Cane for the blind' based on RFID
+
+technology and a Kinect based project which mimics the actions of the human arm.
+
+Various assistive technologies has been developed so far which focuses on improving the quality of life,
+
+some of which include 'Voice Controlled wheel Chair', 'Automatic road navigation' based on Raspberry
+
+pi, 'Car Accident response system' as an immediate alert system in case of an accident, Sound and image
+
+transmission through Li-fi technology and various robotic technologies.
+
+We are also an active participant and winners of numerous contests. A national level contest organized by
+
+Texas Instruments called 'TI Analog design contest' was won by the members of the club in the year 2013
+
+based on the project title- 'Solar Power Based Intelligent Battery Charging System Compatible With Existing
+
+Home Inverters'. 'Hybrid Solar electricity for the buses' and 'Eye ball controlled mouse' were the projects
+
+which got the club the first place two consecutive times in the contest called 'Sangam'. In the same year the
+
+third place was also won by 'Spider' based on the project 'Car Accident Response System'. Moreover, various
+
+other competitions at the inter college level have also been actively participated by the members of the club.
+
+Spider also has a separate section dedicated to coding, which is currently involved in web development and
+
+app development for the android platform. Spider manages its own server from where it hosts a lot of useful
+
+web apps. In the past quizzes and coding competitions were regularly conducted by Spider. This however was
+
+discontinued and is in the process of being revived. In the meantime, we host hackathons where we have
+
+tapped into cutting-edge web APIs such as WebRTC creating games. Apart from this applications such as a
+
+facebook data harvester, a tool for analysis of academic results, an accelerometer control for audio apps on
+
+android and a web markup language parser to create web presentations.
+
+Apart from this the coding department of Spider also organizes annual workshops on web development and
+
+the latest web technologies
+
+Spider has recently made its foray into helping the college admin and to this end taken up the project to
+
+develop the online portal for the new mess system  being implemented in out institute, the hostel allotment for UG, the nostalgia site and many other sites for international paper presentation conferences organised by our institute
+
+
+</font>        
+		
+</div>
+	<?php } ?>
+		</article>
+                
+
+
+	</div>
+   
+	</div>
+</div>
+		
+			</article>
+
+	</div>
+		
 	   
  </body>
 </html>
