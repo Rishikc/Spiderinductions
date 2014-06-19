@@ -39,11 +39,14 @@ or die('error connecting to mysql server');
 		  $_SESSION['firstname']= $row['firstname'];
           $_SESSION['lastname']= $row['lastname'];
 		  
-  
+  @$remember=$_POST['remember'];
+if($remember=='yes')
+{
   setcookie('username', $row['username'], time() + (60 * 60 * 24 * 30));  // expires in 30 days
-  setcookie('password', $row['password'], time() + (60 * 60 * 24 * 30));  // expires in 30 days
-  setcookie('firstname', $row['firstname'], time() + (60 * 60 * 24 * 30));  // expires in 30 days	
-  }
+  setcookie('password', $row['password'], time() + (60 * 60 * 24 * 30)); 
+  setcookie('firstname', $row['firstname'], time() + (60 * 60 * 24 * 30)); 	
+} 
+ }
        else {
           // The username/password are incorrect so set an error message
         echo 'Sorry, you must enter a valid username and password to log in.'.'<br>';
@@ -108,9 +111,10 @@ echo  'Sorry, you must enter your username and password to log in.'.'<br>';
 <a href="#" onclick="document.getElementById('captcha').src = '/securimage/securimage_show.php?' + Math.random(); return false">[ Show Another Image ]</a>
 
     </fieldset>
-	
-    <input type="submit" value="Log In" name="submit" />
-  </CENTER>
+	  <input type="submit" value="Log In" name="submit" />
+	</CENTER>
+<input type="checkbox"  name="remember" id="remember" value="yes">remember me</input>
+  
   </form>
   <a href="signup.php">Signup</a>|
   <a href="forgot.php">Forgot Password</a>
@@ -122,7 +126,6 @@ echo  'Sorry, you must enter your username and password to log in.'.'<br>';
 <img src="file_display.php?lname=<?php echo"".$_SESSION['user_id']. ""?>" width=100 height=100>
 <?php
  echo('<p class="login">Welcome '.$_SESSION['firstname'] .' '. $_SESSION['lastname']  . '.</p>');
-
  ?>
 	<div id="my-id" class="uk-modal">
     <div class="uk-modal-dialog uk-modal-dialog-slide"> 

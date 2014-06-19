@@ -42,7 +42,6 @@ echo  'Sorry, you must enter your username and password to log in.'.'<br>';
       }
     }
   }
-header('Location:home.php');
-exit();
+
   ?>
 

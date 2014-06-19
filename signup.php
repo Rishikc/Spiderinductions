@@ -72,6 +72,11 @@ else y.innerHTML="";
 }
 function githubeval(x,y)
 {
+if(x==0){
+y.innerHTML="";
+}
+else
+{
 var a=-1,b=-1;
 a=x.indexOf("http://github.com/");
 b=x.indexOf("https://github.com/");
@@ -79,6 +84,7 @@ if(a==0||b==0)
 y.innerHTML=""; 
 else
 y.innerHTML="invalid entry-enter in the format http://github.com/ or https://github.com/";
+}
 }
 function passwordeval(x,y){
 if(x.length==0)
@@ -281,13 +287,21 @@ else
 //aftr all validation
 if($evaluator==0)
 {
-if(isset($_FILES['userfile']))
+if(!isset($_FILES['userfile']))
 {
+    echo '<p>Please select a file</p>';
+}
+else
+{
+    
+	$maxsize = 204800; //set to approx 10 MB
 
-   
-    $maxsize = 204800;
+    //check associated error code
+    if($_FILES['userfile']['error']==UPLOAD_ERR_OK) {
 
-  
+        //check whether file is uploaded with HTTP POST
+        if(is_uploaded_file($_FILES['userfile']['tmp_name'])) {    
+
             //checks size of uploaded image on server side
             if( $_FILES['userfile']['size'] < $maxsize) {  
   
@@ -299,38 +313,48 @@ if(isset($_FILES['userfile']))
                     // prepare the image for insertion
                     $imgData =addslashes (file_get_contents($_FILES['userfile']['tmp_name']));
 
-                    // put the image in the db...
-                    // our sql query
-                    
-					$dbc = mysqli_connect('localhost','root','qwerty','spider')
+                    	$dbc = mysqli_connect('localhost','root','qwerty','spider')
 or die('error connecting to mysql server');
 $query1="INSERT INTO signup(firstname,lastname,username,email,dob,gender,password,github,department,profilepicture,interest) values('$firstname','$lastname','$username','$email','$dob','$gender',SHA('$password'),'$github','$department','{$imgData}','$interests')";
 $result=mysqli_query($dbc,$query1)
 or die('error querying 1');
 mysqli_close($dbc);
-echo 'u have successfully signed up :) ';
-
-                    // insert the image
-                }
-          
+echo 'u have successfully signed up :) ';                }
+                else
+                    $msg="<p>Uploaded file is not an image.</p>";
             }
-}
-else{
-$dbc = mysqli_connect('localhost','root','qwerty','spider')
+             else {
+                // if the file is not less than the maximum allowed, print an error
+                $msg='<div>File exceeds the Maximum File limit</div>
+                <div>Maximum File limit is '.$maxsize.' bytes</div>
+                <div>File '.$_FILES['userfile']['name'].' is '.$_FILES['userfile']['size'].
+                ' bytes</div><hr />';
+                }
+        }
+        else
+            $msg="File not uploaded successfully.";
+
+    }
+    else {
+        $dbc = mysqli_connect('localhost','root','qwerty','spider')
 or die('error connecting to mysql server');
 $query1="INSERT INTO signup(firstname,lastname,username,email,dob,gender,password,github,department,profilepicture,interest) values('$firstname','$lastname','$username','$email','$dob','$gender',SHA('$password'),'$github','$department','','$interests')";
 $result=mysqli_query($dbc,$query1)
 or die('error querying 1');
 mysqli_close($dbc);
-echo 'u have successfully signed up :) ';
-}
-}
-}
+$msg="u have successfully signed up :)";
+    }
+	
+    echo @$msg;  //Message showing success or failure.
+	echo "<br /><a href='home.php'>Back to Home page</a>";
+    } 
+	
 
 
+// the upload function
 
-header('Location:home.php');
-exit();
+}
+}
 
  }
  
